@@ -1,4 +1,7 @@
 #!perl
+# Include the name of the trajectory document in line number 17. 
+# Go to edit set and chose the group of beads of interest (press alt and click on a bead), define new set 'S' for the chosen beads.
+# Enter the path where you wish to save the csv file containing the coordinates of the selected beads in each frame of the trajectory in line 11.
 
 use strict;
 use warnings;
@@ -36,4 +39,4 @@ for (my $frame = 1; $frame <= $doc->Trajectory->NumFrames; ++$frame) {
 
 close $fh;
 
-print "Coordinates successfully written to $file_path\n";
+print "Coordinates file path: $file_path\n";
