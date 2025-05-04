@@ -1,6 +1,7 @@
 #!perl
 # This script can be used to delete a connector (or a bond) between any two beads in a mesostructure file (.xsd).
 # Make sure to go to edit sets and chose all beads which can possibly contain the bond or connector of interest. You may chose a mesomoelcule or you can chose all the beads in the entire mesostructure. After selecting, create a new set 'S' for the selected beads.
+# This can be used in cases where you wish to place a counter ion in close proximity of an oppositely cahrged bead, a practice usually to maintain electrical neutrality of the system.
 
 use strict;
 use Getopt::Long;
