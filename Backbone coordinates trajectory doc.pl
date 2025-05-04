@@ -6,19 +6,16 @@ use MaterialsScript qw(:all);
 use warnings;  
 
 
-################################################
-
 my $doc = $Documents{"0.1%.xtd"};
 
-my $setName = "Backbone"; # define name of set
+my $setName = "Backbone"; 
 
-my $object = "Beads"; # Set to Atoms or Beads
+my $object = "Beads";
 
-################################################
 
 my $setItems = $doc->AsymmetricUnit->Sets("$setName")->$object;
 
-for (my $frame = 4001; $frame <= $doc->Trajectory->NumFrames; ++$frame) {
+for (my $frame = 1; $frame <= $doc->Trajectory->NumFrames; ++$frame) {
 
     $doc->Trajectory->CurrentFrame = $frame;
     #print "Frame $frame\n";
