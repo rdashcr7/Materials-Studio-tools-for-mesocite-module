@@ -1,5 +1,5 @@
 %% This code can be used to compare the structural deviation of a simulated mesomolecule from its actual structure's coordinates (mostly extracted from a PDB file) stored in an xlsx file.
-%% Make sure to specify the number of monomer units 'N' of the mesomolecule. 
+%% Make sure to specify the number of monomer units 'N' of the mesomolecule (line 13). 
 %% This code computes the radius of gyration of the simulated mesomolecule (referred to as backbone)
 %% This code also computes Root Mean Square Deviation of the siimulated mesomolecule from the coordinates of actual structure (PDB data.xlsx in this code)
 %% This code also plots the probability contour plots of Rg and RMSD. You can also specify the number of desired contour lines in the contourf command.
@@ -28,7 +28,7 @@ No_structures = No_Data_points/ N; % Number of frames
 i = 1;
 j = 1;
 
-for p = 1:12: No_Data_points
+for p = 1:N: No_Data_points
 
          for j = 1:N
             Structure(i).x(j) = Backbone_data(p,1);
@@ -94,7 +94,7 @@ Structure_data_y = Structure_data_y(:);
 Structure_data_z = Structure_data_z(:);
 
 %% Storing coordinates of backbone beads
-Backbone_data = xlsread('Backbone Coordinates.xlsx'); % storing entire data
+Backbone_data = xlsread('Coordinates.xlsx'); % storing entire data
 
 Data_size = size(Backbone_data); % size of data
 
