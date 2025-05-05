@@ -1,10 +1,16 @@
+%% This code can be used to compare the structural deviation of a simulated mesomolecule from its actual structure's coordinates (mostly extracted from a PDB file) stored in an xlsx file.
+%% Make sure to specify the number of monomer units 'N' of the mesomolecule. 
+%% This code computes the radius of gyration of the simulated mesomolecule (referred to as backbone)
+%% This code also computes Root Mean Square Deviation of the siimulated mesomolecule from the coordinates of actual structure (PDB data.xlsx in this code)
+%% This code also plots the probability contour plots of Rg and RMSD. You can also specify the number of desired contour lines in the contourf command.
+%% The rotation matrix algorithm is used from the theory in 'https://faculty.sites.iastate.edu/jia/files/inline-files/rotation.pdf'.
+
+
 clear all; clc
 
 %% Radius of gyration and RMSD contour plots
 
-L = 3.5*11; % length of fully open chain
 N = 12; % number of residues
-b = L/N; % Kuhn length
 
 %% calculating Rg values from backbone coordinates
 
@@ -171,8 +177,6 @@ for i = 1: No_structures
     end
     RMSD(i) = sqrt(sum/N);
 end
-
-RMSD = RMSD.*0.8;
 
 RMSD = transpose(RMSD);
 %% Define grid
