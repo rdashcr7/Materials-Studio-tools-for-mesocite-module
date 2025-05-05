@@ -4,7 +4,7 @@
 %% This code also computes Root Mean Square Deviation of the siimulated mesomolecule from the coordinates of actual structure (PDB structure.xlsx in this code)
 %% This code also plots the probability contour plots of Rg and RMSD. You can also specify the number of desired contour lines in the contourf command.
 %% The rotation matrix algorithm is used from the theory in 'https://faculty.sites.iastate.edu/jia/files/inline-files/rotation.pdf'.
-
+%% This code includes calculation of the euler angles to superimpose the simulated structure on the actual structure.
 
 clear all; clc
 
