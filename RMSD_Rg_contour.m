@@ -1,7 +1,7 @@
 %% This code can be used to compare the structural deviation of a simulated mesomolecule from its actual structure's coordinates (mostly extracted from a PDB file) stored in an xlsx file.
 %% Make sure to specify the number of monomer units 'N' of the mesomolecule (line 13). 
 %% This code computes the radius of gyration of the simulated mesomolecule (referred to as backbone)
-%% This code also computes Root Mean Square Deviation of the siimulated mesomolecule from the coordinates of actual structure (PDB data.xlsx in this code)
+%% This code also computes Root Mean Square Deviation of the siimulated mesomolecule from the coordinates of actual structure (PDB structure.xlsx in this code)
 %% This code also plots the probability contour plots of Rg and RMSD. You can also specify the number of desired contour lines in the contourf command.
 %% The rotation matrix algorithm is used from the theory in 'https://faculty.sites.iastate.edu/jia/files/inline-files/rotation.pdf'.
 
@@ -15,7 +15,7 @@ N = 12; % number of residues
 %% calculating Rg values from backbone coordinates
 
 %% Storing coordinates of backbone beads
-Backbone_data = xlsread('Backbone Coordinates.xlsx'); % storing entire data
+Backbone_data = xlsread('Coordinates.xlsx'); % storing entire data
 
 Data_size = size(Backbone_data); % size of data
 
@@ -107,7 +107,7 @@ No_structures = No_Data_points/ N; % Number of frames
 i = 1;
 j = 1;
 
-for p = 1:12: No_Data_points
+for p = 1:N: No_Data_points
 
          for j = 1:N
             Structure(i).x(j) = Backbone_data(p,1);
@@ -207,5 +207,5 @@ ax.XAxis.Exponent = 0;
 xtickformat('%.4f')
 xlabel('Root Mean Square Deviation (Å)','FontSize', 30,'FontWeight','bold')
 ylabel('Radius of Gyration (Å)','FontSize', 30, 'FontWeight', 'bold')
-title('5-1 mapping','FontSize', 30, 'FontWeight', 'bold')
+title('Contour plot','FontSize', 30, 'FontWeight', 'bold')
 colorbar
