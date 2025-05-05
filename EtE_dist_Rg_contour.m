@@ -1,3 +1,6 @@
+%% This code is used to calculate the radius of gyration and end to end distance of a mesomolecule of interest from the csv file containing the coordinates extracted from the trajectory.
+%% This code also plots the probability distribution of Radius of gyration and end to end distance of the simulated mesomolecule.
+
 clear all; clc
 %% Contour plots for Rg and EtE
 
@@ -6,7 +9,7 @@ N = 20; % number of residues
 b = L/N; % Kuhn length
 
 %% Storing coordinates of backbone beads
-Backbone_data = xlsread('Backbone coordinates.csv'); % storing entire data
+Backbone_data = xlsread('Coordinates.csv'); % storing entire data
 
 Data_size = size(Backbone_data); % size of data
 
@@ -73,49 +76,6 @@ Rg = transpose(Rg);
 
 %% storing coordinates of first and last beads of the backbone
 
-% Backbone_ends_data = xlsread('Backbone end coordinates.xlsx'); % storing entire data
-% 
-% Data_size = size(Backbone_ends_data); % size of data
-% 
-% No_Data_points = Data_size(1,1); % Number of data points
-% 
-% i = 1;
-% j = 1;
-% 
-% % storing coordinates of one end
-% for i = 1:2:2*No_structures
-%     End1x(j) = Backbone_ends_data(i,1);
-%     End1y(j) = Backbone_ends_data(i,2);
-%     End1z(j) = Backbone_ends_data(i,3);
-%     j = j + 1;
-% end
-% 
-% i = 1;
-% j = 1; 
-% 
-% % storing coordinates of other end
-% for i = 1:2:2*No_structures
-%     End2x(j) = Backbone_ends_data(i+1,1);
-%     End2y(j) = Backbone_ends_data(i+1,2);
-%     End2z(j) = Backbone_ends_data(i+1,3);
-%     j = j + 1;
-% end
-% 
-% % calculating delx, dely, delz values
-% 
-% i = 1;
-% for i = 1:No_structures
-%     delx(i) = End2x(i)-End1x(i);
-%     dely(i) = End2y(i)-End1y(i);
-%     delz(i) = End2z(i)-End1z(i);
-% end
-% 
-% delx = delx(:); 
-% dely = dely(:);
-% delz = delz(:);
-% 
-% EtE_dist = sqrt(delx.^2 + dely.^2 + delz.^2);
-
 i = 1;
 j = 1;
 
@@ -131,24 +91,6 @@ for i = 1:No_structures
 end
 
 EtE_dist = transpose(EtE_dist); 
-
-%% plotting end to end distance
- j =1;
- time(1) = 0;
- 
- for j = 1:No_structures-1
-     time(j+1) = time(j) + 0.45237;
- end
- 
- time = time(:);
- 
-figure(1)
-plot(time,EtE_dist)
-xlabel('Time (in ps)', 'FontSize', 40)
-ylabel('End to End distance', 'FontSize', 40)
-hold off
-
-
 
 %% Define grid
 
@@ -177,13 +119,6 @@ contourf(X,Y,Z,10)
 ax=gca;
 ax.XAxis.Exponent = 0;
 xtickformat('%.4f')
-xlabel('End to End Distance (in )')
-ylabel('Radius of Gyration (in )')
+xlabel('End to End Distance (in Å)')
+ylabel('Radius of Gyration (in Å)')
 colorbar
-
-mean (Rg)
-std(Rg)
-mean(EtE_dist)
-std(EtE_dist)
-max(Z);
-max(ans)
