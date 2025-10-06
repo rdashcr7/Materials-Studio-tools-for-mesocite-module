@@ -8,7 +8,7 @@ b = L/N; % Kuhn length
 
 % storing coordinates of first and last beads of the backbone
 
-Backbone_ends_data = xlsread('Backbone Ends.xlsx'); % storing entire data
+Backbone_ends_data = xlsread('Backbone Ends.xlsx'); % This table contains the x, y and z coordinates of the first and last beads of the peptide chain
 
 Data_size = size(Backbone_ends_data); % size of data
 
